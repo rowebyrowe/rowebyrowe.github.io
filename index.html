@@ -1,1 +1,190 @@
-Hello World
+<title>Jeff Rowe Tutoring</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Layout: single-column editorial landing page — hero, subjects grid, approach, booking CTA, footer. Grounded in chemistry: ink + a periodic-table copper accent. */
+  :root {
+    --bg: #f6f4ef;
+    --surface: #ffffff;
+    --ink: #1a2230;
+    --ink-soft: #46505f;
+    --line: #e2ddd2;
+    --accent: #b5651d;      /* copper */
+    --accent-deep: #8f4e14;
+    --hero-bg: #16202e;
+    --hero-ink: #f3f0e9;
+    --hero-soft: #aeb6c2;
+    --chip: #efe9dd;
+    color-scheme: light;
+    font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #11161f;
+      --surface: #1a212c;
+      --ink: #eef1f6;
+      --ink-soft: #aab3c0;
+      --line: #2a333f;
+      --accent: #d98a3d;
+      --accent-deep: #e9a258;
+      --hero-bg: #0c1320;
+      --hero-ink: #f3f0e9;
+      --hero-soft: #aeb6c2;
+      --chip: #232c38;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #11161f;
+    --surface: #1a212c;
+    --ink: #eef1f6;
+    --ink-soft: #aab3c0;
+    --line: #2a333f;
+    --accent: #d98a3d;
+    --accent-deep: #e9a258;
+    --hero-bg: #0c1320;
+    --hero-ink: #f3f0e9;
+    --hero-soft: #aeb6c2;
+    --chip: #232c38;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); line-height: 1.6; margin: 0; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, "Times New Roman", serif; text-wrap: balance; line-height: 1.12; margin: 0; font-weight: 600; }
+  p { margin: 0; }
+  a { color: inherit; }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+  /* Hero */
+  .hero { background: var(--hero-bg); color: var(--hero-ink); }
+  .hero-inner { max-width: 920px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: clamp(3rem, 8vw, 5.5rem); }
+  .eyebrow { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 1.1rem; }
+  .hero h1 { font-size: clamp(2.3rem, 6.5vw, 3.6rem); letter-spacing: -.01em; }
+  .hero .lede { color: var(--hero-soft); font-size: clamp(1.05rem, 2.5vw, 1.25rem); max-width: 34ch; margin-top: 1.1rem; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; font-size: 1rem; padding: .85rem 1.5rem; border-radius: 6px; text-decoration: none; transition: transform .08s ease, background .15s ease; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-deep); }
+  .btn:active { transform: translateY(1px); }
+  .btn-ghost { border: 1px solid var(--hero-soft); color: var(--hero-ink); }
+  .btn-ghost:hover { border-color: var(--hero-ink); }
+
+  /* Sections */
+  section { padding-block: clamp(2.6rem, 6vw, 4rem); }
+  .label { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 1rem; }
+  h2 { font-size: clamp(1.6rem, 4vw, 2.1rem); }
+  .section-lead { color: var(--ink-soft); max-width: 60ch; margin-top: .9rem; font-size: 1.05rem; }
+
+  /* Subjects */
+  .subjects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.8rem; }
+  @media (max-width: 680px) { .subjects { grid-template-columns: 1fr; } }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1.4rem; min-width: 0; }
+  .card h3 { font-size: 1.25rem; margin-bottom: .5rem; }
+  .card .levels { color: var(--ink-soft); font-size: .95rem; }
+  .card .sym { font-family: "Fraunces", Georgia, serif; font-size: 1.1rem; color: var(--accent); font-weight: 600; display: inline-block; border: 1px solid var(--line); border-radius: 6px; padding: .05rem .5rem; margin-bottom: .9rem; }
+
+  /* Approach / about split */
+  .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+  @media (max-width: 680px) { .split { grid-template-columns: 1fr; } }
+  .creds { list-style: none; margin: 1.4rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .7rem; }
+  .creds li { display: flex; gap: .7rem; color: var(--ink-soft); }
+  .creds li::before { content: "—"; color: var(--accent); font-weight: 700; }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.3rem; }
+  .chip { background: var(--chip); color: var(--ink-soft); font-size: .85rem; padding: .3rem .7rem; border-radius: 999px; }
+
+  /* Booking band */
+  .booking { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .booking .inner { text-align: center; max-width: 620px; margin: 0 auto; }
+  .booking p { color: var(--ink-soft); margin-top: .9rem; font-size: 1.05rem; }
+  .booking .cta-row { justify-content: center; }
+  .contact { margin-top: 1.5rem; font-size: 1.05rem; }
+  .contact .email { font-weight: 600; color: var(--accent); user-select: all; }
+
+  footer { padding-block: 2rem; color: var(--ink-soft); font-size: .9rem; text-align: center; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap">
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Chemistry · Physics · Math</div>
+    <h1>Science and math tutoring that actually makes it click.</h1>
+    <p class="lede">One-on-one online help from a biochemist who's been tutoring since 2017 — from high school through college.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://calendar.app.google/h89cj6QzFoGN8jPZ6">Book a session</a>
+      <a class="btn btn-ghost" href="#subjects">See subjects</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="subjects">
+    <div class="wrap">
+      <div class="label">What I teach</div>
+      <h2>Subjects &amp; levels</h2>
+      <p class="section-lead">High school, honors, AP, IB, and college coursework. If you're not sure whether your class fits, just ask.</p>
+      <div class="subjects">
+        <div class="card">
+          <span class="sym">Ch</span>
+          <h3>Chemistry</h3>
+          <p class="levels">High school, honors, AP &amp; IB. College general and organic chemistry.</p>
+        </div>
+        <div class="card">
+          <span class="sym">Ph</span>
+          <h3>Physics</h3>
+          <p class="levels">High school &amp; honors. AP Physics 1, 2, and C (mechanics).</p>
+        </div>
+        <div class="card">
+          <span class="sym">Ma</span>
+          <h3>Math</h3>
+          <p class="levels">Algebra 2, Precalculus, and Trigonometry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <div class="label">How I work</div>
+        <h2>Fix the gap, not just the homework.</h2>
+        <p class="section-lead">Most students don't need everything re-taught — they need the one or two ideas underneath the problem to finally make sense. We start with what's actually tripping you up, work real problems together, and build until you can do it without me. Sessions are online, so we can meet from anywhere and share a whiteboard and your actual assignments in real time.</p>
+        <div class="chips">
+          <span class="chip">Online sessions</span>
+          <span class="chip">Exam &amp; AP prep</span>
+          <span class="chip">Homework support</span>
+          <span class="chip">Concept building</span>
+        </div>
+      </div>
+      <div>
+        <div class="label">Background</div>
+        <h2>About Jeff</h2>
+        <ul class="creds">
+          <li>B.S. in Biochemistry from BYU</li>
+          <li>Former university chemistry teaching assistant</li>
+          <li>Tutoring since 2017 — roughly 100 students</li>
+          <li>Taught English for two years in Ukraine</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking">
+    <div class="wrap inner">
+      <div class="label" style="display:inline-block">Get started</div>
+      <h2>Ready to book?</h2>
+      <p>Pick a time that works on my calendar and we'll get going. First session is a good moment to tell me what class you're in and what's giving you trouble.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://calendar.app.google/h89cj6QzFoGN8jPZ6">Book a session</a>
+      </div>
+      <p class="contact">Questions first? Email me at <a class="email" href="mailto:jeffrowetull@gmail.com">jeffrowetull@gmail.com</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Jeff Rowe · Online chemistry, physics &amp; math tutoring</div>
+</footer>
